@@ -7,8 +7,8 @@ interface TopPageProps {
 }
 export default function TopPage({ sx }: TopPageProps) {
     return (
-        <PageTemplate>
+        <Box sx={{ ...sx, width: "100%", heigh: "100%", background: "#eeeeee" }}>
             <h1>TopPage</h1>
-        </PageTemplate>
+        </Box>
     )
 }
