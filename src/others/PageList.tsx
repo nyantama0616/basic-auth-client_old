@@ -7,8 +7,8 @@ export default function PageList() {
             <h3>見たいページを選んでね</h3>
             <List>
                 <Item text="Home" route="/" mb={4}/>
-                <Item text="Ping" route="#" mb={4} />
-                <Item text="ユーザーを作成" route="#"/>
+                <Item text="Ping" route="/ping" mb={4} />
+                <Item text="ユーザーを作成" route="/create-user"/>
                 <Item text="ユーザ一覧を取得" route="#"/>
                 <Item text="ユーザー情報を取得" route="#"/>
                 <Item text="ユーザー情報を更新" route="#"/>
