@@ -8,7 +8,7 @@ export default function usePingManager(): IPingManager {
         GET /pongを叩いてメッセージを取得する
      */
     function submit() {
-        console.log("send pong");
+        console.log("GET /pong");
     }
 
     return {

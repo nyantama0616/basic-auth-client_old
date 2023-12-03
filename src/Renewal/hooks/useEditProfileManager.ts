@@ -33,14 +33,14 @@ export default function useEditProfileManager(user: User): IEditProfileManager {
      */
     function submit() {
         if (!state.isSubmittable) return;
-        console.log("save profile", state);
+        console.log("PATCH /users/:id", state);
     }
 
     /* Look at Me!
         POST /closeを叩いてユーザーを削除する
      */
     function destroy() {
-        console.log('destroy', user.user_id);
+        console.log('POST /close', { user_id: user.user_id });
     }
 
     useEffect(() => {

@@ -31,7 +31,7 @@ export default function useSignUpManager(): ISignUpManager {
      */
     function submit() {
         if (!state.isSubmittable) return;
-        console.log("create user", state);
+        console.log("POST /users", state);
         _clear();
     }
 

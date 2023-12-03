@@ -42,7 +42,7 @@ export default function UserListProvider({ children }: UserListProviderProps) {
      */
     function update() {
         if (!state.isUpdatable) return;
-        console.log("update user list");
+        console.log("GET /users");
     }
 
     function selectUser(user_id: string) {

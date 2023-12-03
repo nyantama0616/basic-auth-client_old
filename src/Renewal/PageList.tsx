@@ -11,8 +11,6 @@ interface PageListProps {
     sx?: SxProps
 }
 
-//TODO: スクロールバー消す！
-
 export default function PageList({ pages, sx }: PageListProps) {
     const items = pages?.map((block, i) => {
         return block.map((page, j) => {
