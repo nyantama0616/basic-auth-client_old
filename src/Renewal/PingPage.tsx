@@ -1,19 +1,21 @@
 import { Box, Grid, Button, Typography } from "@mui/material";
 import { SxProps } from "@mui/system";
+import usePingManager from "./hooks/usePingManager";
 
 interface PingProps {
-    message?: string
     sx?: SxProps
 }
-export default function PingPage({ message, sx }: PingProps) {
+export default function PingPage({ sx }: PingProps) {
+    const manager = usePingManager();
+    
     return (
         <Box sx={{ ...sx }}>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
-                    <Typography variant="h5">GET /pong</Typography>
+                    <Typography variant="h6" mt={2}>GET /pong</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button variant="contained">Ping!</Button>
+                    <Button variant="contained" onClick={manager.submit}>Pong!</Button>
                 </Grid>
                 <Grid item container xs={12} justifyContent="center">
                     <Grid item xs={12}>
@@ -26,7 +28,7 @@ export default function PingPage({ message, sx }: PingProps) {
                             backgroundColor: "#cceeee", height: "100px", display: "flex", justifyContent: "center", alignItems: "center"
                             }}
                         >
-                            <Typography variant="body1">{message}</Typography>
+                            <Typography variant="body1">{manager.message}</Typography>
                         </Box>
                     </Grid>
                 </Grid>

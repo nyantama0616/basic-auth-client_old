@@ -14,21 +14,6 @@ const pages = [
     ],
 ];
 
-const users = [
-    { user_id: "user1", email: "panda@examle.com" },
-    { user_id: "user2", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-    { user_id: "user3", email: "panda@examle.com" },
-];
-
 interface LayoutProps {
     children?: React.ReactNode;
 }
@@ -36,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
     return (
         <Box sx={{ width: "100%", height: "100%", background: "#cccccc", display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Grid container justifyContent="center" alignItems="center">
-                <Grid item xs={12} md={10}>
+                <Grid item xs={12} sm={10} md={8} lg={6} xl={5} >
                     <Box
                         sx={{
                             width: "100%",
@@ -57,7 +42,6 @@ export default function Layout({ children }: LayoutProps) {
                         {children}
 
                         <UserList
-                            users={users}
                             sx={{
                                 gridColumn: "3",
                                 backgroundColor: "#eeeeee",

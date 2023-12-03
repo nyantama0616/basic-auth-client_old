@@ -1,54 +1,73 @@
 import { Box, Grid, Typography, TextField, Button } from "@mui/material";
 import { SxProps } from "@mui/system";
-
-interface User {
-    user_id: string;
-    email: string;
-    password: string;
-    nickname: string;
-    comment: string;
-}
+import { useUserListManager } from "./contexts/UserListContext";
+import { useNavigate } from "react-router-dom";
+import User from "./types/User";
 
 interface ProfilePageProps {
     sx?: SxProps
 }
 export default function ProfilePage({ sx }: ProfilePageProps) {
+    const manager = useUserListManager();
+    const user = manager.selectedUser;
+    const navigate = useNavigate();
+
+    function _handleEditButtonClick() {
+        navigate("/edit-profile");
+    }
+
     return (
         <Box sx={{ ...sx }}>
             <Grid container spacing={2} justifyContent="center">
                 <Grid item xs={12}>
                     <Typography variant="h6" mt={2}>プロフィール</Typography>
                 </Grid>
-                <Grid item xs={10}>
-                    <table style={{textAlign: "left"}}>
-                        <tr>
-                            <th>ユーザーID</th>
-                            <td>user1</td>
-                        </tr>
-                        <tr>
-                            <th>メールアドレス</th>
-                            <td>panda@example.com</td>
-                        </tr>
-                        <tr>
-                            <th>パスワード</th>
-                            <td>panda</td>
-                        </tr>
-                        <tr>
-                            <th>ニックネーム</th>
-                            <td>ぱっぴー</td>
-                        </tr>
-                        <tr>
-                            <th>コメント</th>
-                            <td>よろしくおねがいします</td>
-                        </tr>
-                    </table>
-                </Grid>
-                <Grid item xs={12}>
-                    <Button variant="outlined">編集</Button>
-                </Grid>
+                {
+                    user ? (
+                        <Profile user={user} onClickEditButton={_handleEditButtonClick} />
+                    ) : (
+                        <Grid item xs={12}>
+                            <Typography variant="h6">ユーザーが選択されていません</Typography>
+                        </Grid>
+                    )
+                }
             </Grid>
         </Box>
     )
 }
 
-//TODO: ページリストとユーザリストにもmt={2}をつける
+interface ProfileProps {
+    user: User;
+    onClickEditButton: () => void;
+}
+function Profile({ user, onClickEditButton }: ProfileProps) {
+    return (
+        <>
+            <Grid item xs={10}>
+                <table style={{ textAlign: "left" }}>
+                    <tbody>
+                        <tr>
+                            <th>ユーザーID</th>
+                            <td>{user?.user_id}</td>
+                        </tr>
+                        <tr>
+                            <th>パスワード</th>
+                            <td>{user?.password}</td>
+                        </tr>
+                        <tr>
+                            <th>ニックネーム</th>
+                            <td>{user?.nickname}</td>
+                        </tr>
+                        <tr>
+                            <th>コメント</th>
+                            <td>{user?.comment}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Grid>
+            <Grid item xs={12}>
+                <Button variant="outlined" onClick={onClickEditButton}>編集</Button>
+            </Grid>
+        </>
+    );
+}

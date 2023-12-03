@@ -27,7 +27,7 @@ export default function PageList({ pages, sx }: PageListProps) {
     });
     return (
         <Box sx={{...sx}}>
-            <Typography variant="h6">
+            <Typography variant="h6" mt={2}>
                 ページリスト
             </Typography>
             <List>
